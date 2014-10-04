@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4142510719DFF6720074E9BE /* Treasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4142510619DFF6720074E9BE /* Treasure.swift */; };
+		4142510919DFF7180074E9BE /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4142510819DFF7180074E9BE /* GeoLocation.swift */; };
 		C982FA1C194DAB5E00EFCAFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C982FA1B194DAB5E00EFCAFD /* AppDelegate.swift */; };
 		C982FA1E194DAB5E00EFCAFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C982FA1D194DAB5E00EFCAFD /* ViewController.swift */; };
 		C982FA21194DAB5E00EFCAFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C982FA1F194DAB5E00EFCAFD /* Main.storyboard */; };
@@ -25,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4142510619DFF6720074E9BE /* Treasure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treasure.swift; sourceTree = "<group>"; };
+		4142510819DFF7180074E9BE /* GeoLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
 		C982FA16194DAB5E00EFCAFD /* TreasureHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreasureHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C982FA1A194DAB5E00EFCAFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C982FA1B194DAB5E00EFCAFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 				C982FA1F194DAB5E00EFCAFD /* Main.storyboard */,
 				C982FA22194DAB5E00EFCAFD /* Images.xcassets */,
 				C982FA19194DAB5E00EFCAFD /* Supporting Files */,
+				4142510619DFF6720074E9BE /* Treasure.swift */,
+				4142510819DFF7180074E9BE /* GeoLocation.swift */,
 			);
 			path = TreasureHunt;
 			sourceTree = "<group>";
@@ -208,8 +214,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4142510919DFF7180074E9BE /* GeoLocation.swift in Sources */,
 				C982FA1E194DAB5E00EFCAFD /* ViewController.swift in Sources */,
 				C982FA1C194DAB5E00EFCAFD /* AppDelegate.swift in Sources */,
+				4142510719DFF6720074E9BE /* Treasure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

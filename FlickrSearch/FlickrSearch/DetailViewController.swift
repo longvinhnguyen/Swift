@@ -47,7 +47,8 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout, UICollection
     let imageCell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as ImageCell
     let photo = self.photos[indexPath.row]
     photo.loadImage(true) {
-      switch $0 {
+        [unowned self] (results: Flickr.Photo.PhotoResult) in
+      switch results {
       case .Error:
         break
       case .Image(let image):

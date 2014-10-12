@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4142517219E6CEC30074E9BE /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4142517119E6CEC30074E9BE /* Cafe.swift */; };
+		41B6337019EA7367007CD22F /* CafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6336F19EA7367007CD22F /* CafeViewController.swift */; };
 		C94AE2EB1975BDB3003425A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AE2EA1975BDB3003425A7 /* AppDelegate.swift */; };
 		C94AE2ED1975BDB3003425A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AE2EC1975BDB3003425A7 /* ViewController.swift */; };
 		C94AE2F01975BDB3003425A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94AE2EE1975BDB3003425A7 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		4142517019E6C5D60074E9BE /* CafeHunter-ObjCBridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CafeHunter-ObjCBridging.h"; sourceTree = "<group>"; };
 		4142517119E6CEC30074E9BE /* Cafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
+		41B6336F19EA7367007CD22F /* CafeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeViewController.swift; sourceTree = "<group>"; };
 		C94AE2E51975BDB3003425A7 /* CafeHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CafeHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94AE2E91975BDB3003425A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94AE2EA1975BDB3003425A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				C94AE3101975C21A003425A7 /* FacebookSDK.framework */,
 				C94AE2E81975BDB3003425A7 /* Supporting Files */,
 				4142517119E6CEC30074E9BE /* Cafe.swift */,
+				41B6336F19EA7367007CD22F /* CafeViewController.swift */,
 			);
 			path = CafeHunter;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B6337019EA7367007CD22F /* CafeViewController.swift in Sources */,
 				4142517219E6CEC30074E9BE /* Cafe.swift in Sources */,
 				C94AE2ED1975BDB3003425A7 /* ViewController.swift in Sources */,
 				C94AE2EB1975BDB3003425A7 /* AppDelegate.swift in Sources */,

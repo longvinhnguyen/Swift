@@ -38,6 +38,9 @@ class ViewController: UIViewController {
     
     self.locationManager = CLLocationManager()
     self.locationManager.delegate = self
+    self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh:")
+    
+    
     
     FBSettings.setDefaultAppID("1496822950570177");
     
@@ -70,7 +73,7 @@ class ViewController: UIViewController {
             return
         }
         
-        let urlString = NSString(format:"https://graph.facebook.com/v2.0/search/?access_token=%@&type=place&q=cafe&center=%f,%f&distance=%d", FBSession.activeSession().accessTokenData.accessToken, location.coordinate.longitude, location.coordinate.latitude, searchDistance)
+        let urlString = "https://graph.facebook.com/v2.0/search/?access_token=\(FBSession.activeSession().accessTokenData.accessToken)&type=place&q=cafe&center=\(location.coordinate.latitude),\(location.coordinate.longitude)&distance=\(Int(searchDistance))"
         
         let url = NSURL(string:urlString)
         println("Requesting from FB with URL: \(url)")
@@ -78,55 +81,43 @@ class ViewController: UIViewController {
         let request = NSURLRequest(URL:url)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
-//            var error: NSError?
-//            let jsonObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.fromMask(0), error: &error)
-//            if let jsonObject = jsonObject as? [String:AnyObject] {
-//                if error == nil {
-//                    println("Data returned from FB:\n\(jsonObject)")
-//                    
-//                    if let data = JSONValue.fromObject(jsonObject)?["data"]?.array {
-//                        var cafes = [Cafe]()
-//                        for cafeJSON in data {
-//                            if let cafeJSON = cafeJSON.object {
-//                                //
-//                                if let cafe = Cafe.fromJSON(cafeJSON) {
-//                                    cafes.append(cafe)
-//                                }
-//                            }
-//                        }
-//                        
-//                        
-//                        self.mapView.removeAnnotations(self.cafes)
-//                        self.cafes = cafes
-//                        self.mapView.addAnnotations(self.cafes)
             var error: NSError?
-            let jsonObject: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
-            // 5
-            if let jsonObject = jsonObject as? [String:AnyObject] { if error == nil {
-                println("Data returned from FB:\n\(jsonObject)")
-                // 6
-                if let data = JSONValue.fromObject(jsonObject)?["data"]?.array
-            {
-                // 7
-                var cafes: [Cafe] = []
-                for cafeJSON in data {
-                    if let cafeJSON = cafeJSON.object {
-                        // TODO: Create Cafe and add to array
-                        if let cafe = Cafe.fromJSON(cafeJSON) {
-                            cafes.append(cafe)
+            let jsonObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.fromMask(0), error: &error)
+            if let jsonObject = jsonObject as? [String:AnyObject] {
+                if error == nil {
+                    println("Data returned from FB:\n\(jsonObject)")
+                    
+                    if let data = JSONValue.fromObject(jsonObject)?["data"]?.array {
+                        var cafes = [Cafe]()
+                        for cafeJSON in data {
+                            if let cafeJSON = cafeJSON.object {
+                                //
+                                if let cafe = Cafe.fromJSON(cafeJSON) {
+                                    cafes.append(cafe)
+                                }
+                            }
                         }
-                    }
-                }
-                // 8
-                self.mapView.removeAnnotations(self.cafes)
-                self.cafes = cafes
-                self.mapView.addAnnotations(cafes)
+                        
+                        
+                        self.mapView.removeAnnotations(self.cafes)
+                        self.cafes = cafes
+                        self.mapView.addAnnotations(self.cafes)
                     }
                 }
             }
         }
     }
     
+    func refresh(sender:UIBarButtonItem) {
+        if let location = self.lastLocation {
+            self.centerMapOnLocation(location)
+            self.fetchCafesAroundLocation(location)
+        } else {
+            let alert = UIAlertController(title: "Error", message: "No location yet!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self .presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     
     
     
@@ -179,7 +170,23 @@ extension ViewController: MKMapViewDelegate {
         
         return nil
     }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        if let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("CafeView") as? CafeViewController {
+            if let cafe = view.annotation as? Cafe {
+                viewController.cafe = cafe
+                viewController.delegate = self
+            }
+            self.presentViewController(viewController, animated: true, completion: nil)
+        }
+    }
 
+}
+
+extension ViewController: CafeViewControllerDelegate {
+    func cafeViewControllerDidFinish(viewController:CafeViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 

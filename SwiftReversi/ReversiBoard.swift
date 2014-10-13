@@ -10,6 +10,7 @@ import Foundation
 
 class ReversiBoard: Board {
     private (set) var blackScore = 0, whiteScore = 0
+    private (set) var nextMove = BoardCellState.White
     
     func setInitialState() {
         clearBoard()
@@ -34,4 +35,69 @@ class ReversiBoard: Board {
     func clearBoard() {
         cellVisitor{self[$0] = .Empty}
     }
+    
+    func isValidMove(location:BoardLocation) -> Bool {
+        return isValidMove(location, toState: nextMove)
+    }
+    
+    func isValidMove(location:BoardLocation, toState:BoardCellState) -> Bool {
+        if self[location] != BoardCellState.Empty {
+            return false
+        }
+        
+        // test whether the move surrounds any of the opponent pieces
+        for direction in MoveDirection.directions {
+            if moveSurroundsCounters(location, direction: direction, toState: toState) {
+                return true
+            }
+        }
+            
+        return false
+    }
+    
+    func makeMove(location:BoardLocation) {
+        self[location] = nextMove
+        nextMove = nextMove.invert()
+    }
+    
+    func moveSurroundsCounters(location:BoardLocation, direction: MoveDirection, toState:BoardCellState) -> Bool {
+        var index = 1
+        var currentLocation = direction.move(location)
+     
+        while isWithinBounds(location) {
+            let currentState = self[currentLocation]
+            if index == 1 {
+                if currentState != toState.invert() {
+                    return false
+                }
+             } else {
+                if currentState == toState {
+                    return true
+                }
+                
+                if currentState == BoardCellState.Empty {
+                    return false
+                }
+            }
+
+            index++
+            
+            // move to the next cell
+            currentLocation = direction.move(currentLocation)
+        }
+
+        return false
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

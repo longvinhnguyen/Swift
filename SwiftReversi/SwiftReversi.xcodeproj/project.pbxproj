@@ -16,6 +16,15 @@
 		41B6337B19EA87DA007CD22F /* ReversiBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6337A19EA87DA007CD22F /* ReversiBoard.swift */; };
 		41B6337D19EA89F7007CD22F /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6337C19EA89F7007CD22F /* BoardSquare.swift */; };
 		41B6337F19EA8C97007CD22F /* ReversiBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6337E19EA8C97007CD22F /* ReversiBoardView.swift */; };
+		41B6338119EC14C5007CD22F /* BoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6338019EC14C5007CD22F /* BoardDelegate.swift */; };
+		41B6338519EC16DA007CD22F /* DelegateMulticast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6338419EC16D9007CD22F /* DelegateMulticast.swift */; };
+		41B6338619EC18A2007CD22F /* BoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6338019EC14C5007CD22F /* BoardDelegate.swift */; };
+		41B6338719EC18A5007CD22F /* DelegateMulticast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6338419EC16D9007CD22F /* DelegateMulticast.swift */; };
+		41B6338819EC18A8007CD22F /* ReversiBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6337A19EA87DA007CD22F /* ReversiBoard.swift */; };
+		41B6338919EC18B0007CD22F /* ReversiBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6337E19EA8C97007CD22F /* ReversiBoardView.swift */; };
+		41B6338A19EC18B3007CD22F /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6337C19EA89F7007CD22F /* BoardSquare.swift */; };
+		41B6338C19EC1EDC007CD22F /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6338B19EC1EDC007CD22F /* MoveDirection.swift */; };
+		41B6338D19EC209C007CD22F /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6338B19EC1EDC007CD22F /* MoveDirection.swift */; };
 		727E1BDE194E179100A3E900 /* rrbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 727E1BDC194E179100A3E900 /* rrbutton.png */; };
 		727E1BDF194E179100A3E900 /* rrbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 727E1BDD194E179100A3E900 /* rrbutton@2x.png */; };
 		727E1BE4194E186400A3E900 /* ReversiBlackScore.png in Resources */ = {isa = PBXBuildFile; fileRef = 727E1BE0194E186400A3E900 /* ReversiBlackScore.png */; };
@@ -52,6 +61,9 @@
 		41B6337A19EA87DA007CD22F /* ReversiBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiBoard.swift; sourceTree = SOURCE_ROOT; };
 		41B6337C19EA89F7007CD22F /* BoardSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardSquare.swift; sourceTree = SOURCE_ROOT; };
 		41B6337E19EA8C97007CD22F /* ReversiBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiBoardView.swift; sourceTree = SOURCE_ROOT; };
+		41B6338019EC14C5007CD22F /* BoardDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardDelegate.swift; sourceTree = SOURCE_ROOT; };
+		41B6338419EC16D9007CD22F /* DelegateMulticast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateMulticast.swift; sourceTree = SOURCE_ROOT; };
+		41B6338B19EC1EDC007CD22F /* MoveDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveDirection.swift; sourceTree = SOURCE_ROOT; };
 		727E1BDC194E179100A3E900 /* rrbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rrbutton.png; sourceTree = "<group>"; };
 		727E1BDD194E179100A3E900 /* rrbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rrbutton@2x.png"; sourceTree = "<group>"; };
 		727E1BE0194E186400A3E900 /* ReversiBlackScore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReversiBlackScore.png; sourceTree = "<group>"; };
@@ -173,10 +185,13 @@
 		728E603319437ED0000E9F89 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				41B6337519EA84C1007CD22F /* Board.swift */,
 				41B6337119EA8446007CD22F /* BoardCellState.swift */,
 				41B6337319EA846D007CD22F /* BoardLocation.swift */,
-				41B6337519EA84C1007CD22F /* Board.swift */,
 				41B6337A19EA87DA007CD22F /* ReversiBoard.swift */,
+				41B6338019EC14C5007CD22F /* BoardDelegate.swift */,
+				41B6338419EC16D9007CD22F /* DelegateMulticast.swift */,
+				41B6338B19EC1EDC007CD22F /* MoveDirection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,14 +316,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B6338119EC14C5007CD22F /* BoardDelegate.swift in Sources */,
 				728E600719436315000E9F89 /* ViewController.swift in Sources */,
 				41B6337D19EA89F7007CD22F /* BoardSquare.swift in Sources */,
+				41B6338519EC16DA007CD22F /* DelegateMulticast.swift in Sources */,
 				41B6337219EA8446007CD22F /* BoardCellState.swift in Sources */,
 				41B6337619EA84C1007CD22F /* Board.swift in Sources */,
 				41B6337F19EA8C97007CD22F /* ReversiBoardView.swift in Sources */,
 				41B6337B19EA87DA007CD22F /* ReversiBoard.swift in Sources */,
 				728E600519436315000E9F89 /* AppDelegate.swift in Sources */,
 				41B6337419EA846D007CD22F /* BoardLocation.swift in Sources */,
+				41B6338C19EC1EDC007CD22F /* MoveDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +335,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				41B6337719EA8627007CD22F /* Board.swift in Sources */,
+				41B6338819EC18A8007CD22F /* ReversiBoard.swift in Sources */,
+				41B6338719EC18A5007CD22F /* DelegateMulticast.swift in Sources */,
 				41B6337819EA862A007CD22F /* BoardCellState.swift in Sources */,
+				41B6338D19EC209C007CD22F /* MoveDirection.swift in Sources */,
+				41B6338919EC18B0007CD22F /* ReversiBoardView.swift in Sources */,
+				41B6338619EC18A2007CD22F /* BoardDelegate.swift in Sources */,
+				41B6338A19EC18B3007CD22F /* BoardSquare.swift in Sources */,
 				728E601819436315000E9F89 /* SwiftReversiTests.swift in Sources */,
 				41B6337919EA862D007CD22F /* BoardLocation.swift in Sources */,
 			);

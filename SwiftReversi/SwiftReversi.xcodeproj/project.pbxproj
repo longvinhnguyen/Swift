@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41205F4219EEB5A400FCC08C /* ReversiBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41205F4119EEB5A400FCC08C /* ReversiBoardDelegate.swift */; };
+		41205F4319EEB5AB00FCC08C /* ReversiBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41205F4119EEB5A400FCC08C /* ReversiBoardDelegate.swift */; };
+		41205F4519EEC2C000FCC08C /* ComputeOpponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41205F4419EEC2C000FCC08C /* ComputeOpponent.swift */; };
 		41B6337219EA8446007CD22F /* BoardCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6337119EA8446007CD22F /* BoardCellState.swift */; };
 		41B6337419EA846D007CD22F /* BoardLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6337319EA846D007CD22F /* BoardLocation.swift */; };
 		41B6337619EA84C1007CD22F /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6337519EA84C1007CD22F /* Board.swift */; };
@@ -55,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41205F4119EEB5A400FCC08C /* ReversiBoardDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiBoardDelegate.swift; sourceTree = SOURCE_ROOT; };
+		41205F4419EEC2C000FCC08C /* ComputeOpponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputeOpponent.swift; sourceTree = SOURCE_ROOT; };
 		41B6337119EA8446007CD22F /* BoardCellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCellState.swift; sourceTree = SOURCE_ROOT; };
 		41B6337319EA846D007CD22F /* BoardLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardLocation.swift; sourceTree = SOURCE_ROOT; };
 		41B6337519EA84C1007CD22F /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = SOURCE_ROOT; };
@@ -192,6 +197,8 @@
 				41B6338019EC14C5007CD22F /* BoardDelegate.swift */,
 				41B6338419EC16D9007CD22F /* DelegateMulticast.swift */,
 				41B6338B19EC1EDC007CD22F /* MoveDirection.swift */,
+				41205F4119EEB5A400FCC08C /* ReversiBoardDelegate.swift */,
+				41205F4419EEC2C000FCC08C /* ComputeOpponent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -320,12 +327,14 @@
 				728E600719436315000E9F89 /* ViewController.swift in Sources */,
 				41B6337D19EA89F7007CD22F /* BoardSquare.swift in Sources */,
 				41B6338519EC16DA007CD22F /* DelegateMulticast.swift in Sources */,
+				41205F4219EEB5A400FCC08C /* ReversiBoardDelegate.swift in Sources */,
 				41B6337219EA8446007CD22F /* BoardCellState.swift in Sources */,
 				41B6337619EA84C1007CD22F /* Board.swift in Sources */,
 				41B6337F19EA8C97007CD22F /* ReversiBoardView.swift in Sources */,
 				41B6337B19EA87DA007CD22F /* ReversiBoard.swift in Sources */,
 				728E600519436315000E9F89 /* AppDelegate.swift in Sources */,
 				41B6337419EA846D007CD22F /* BoardLocation.swift in Sources */,
+				41205F4519EEC2C000FCC08C /* ComputeOpponent.swift in Sources */,
 				41B6338C19EC1EDC007CD22F /* MoveDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41205F4319EEB5AB00FCC08C /* ReversiBoardDelegate.swift in Sources */,
 				41B6337719EA8627007CD22F /* Board.swift in Sources */,
 				41B6338819EC18A8007CD22F /* ReversiBoard.swift in Sources */,
 				41B6338719EC18A5007CD22F /* DelegateMulticast.swift in Sources */,

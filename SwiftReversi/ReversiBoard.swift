@@ -11,6 +11,20 @@ import Foundation
 class ReversiBoard: Board {
     private (set) var blackScore = 0, whiteScore = 0
     private (set) var nextMove = BoardCellState.White
+    private (set) var gameFinished = false
+    
+    private let reversiBoardDelegates = DelegateMulticast<ReversiBoardDelegate>()
+    
+    override init() {
+        super.init()
+    }
+    
+    init(board:ReversiBoard) {
+        super.init(board: board)
+        nextMove = board.nextMove
+        blackScore = board.blackScore
+        whiteScore = board.whiteScore
+    }
     
     func setInitialState() {
         clearBoard()
@@ -21,15 +35,6 @@ class ReversiBoard: Board {
         
         blackScore = 2
         whiteScore = 2
-    }
-    
-    func cellVisitor(fn: (BoardLocation)->()) {
-        for column in 0..<self.boardSize {
-            for row in 0..<self.boardSize {
-            let location = BoardLocation(row: row, column: column)
-                fn(location)
-            }
-        }
     }
     
     func clearBoard() {
@@ -57,14 +62,25 @@ class ReversiBoard: Board {
     
     func makeMove(location:BoardLocation) {
         self[location] = nextMove
-        nextMove = nextMove.invert()
+        
+        for direction in MoveDirection.directions {
+            flipOpponentsCounters(location, direction: direction, toState: nextMove)
+        }
+        
+        switchTurns()
+        
+        gameFinished = checkIfGameHasFinished()
+        
+        whiteScore = countMatches{self[$0] == BoardCellState.White}
+        blackScore = countMatches{self[$0] == BoardCellState.Black}
+        reversiBoardDelegates.invokeDelegates{$0.boardStateChanged()}
     }
     
     func moveSurroundsCounters(location:BoardLocation, direction: MoveDirection, toState:BoardCellState) -> Bool {
         var index = 1
         var currentLocation = direction.move(location)
      
-        while isWithinBounds(location) {
+        while isWithinBounds(currentLocation) {
             let currentState = self[currentLocation]
             if index == 1 {
                 if currentState != toState.invert() {
@@ -89,14 +105,41 @@ class ReversiBoard: Board {
         return false
     }
 
+    func addDelegate(delegate: ReversiBoardDelegate) {
+        reversiBoardDelegates.addDelegate(delegate)
+    }
     
+    private func flipOpponentsCounters(location:BoardLocation, direction:MoveDirection, toState:BoardCellState) {
+        if !moveSurroundsCounters(location, direction: direction, toState: toState) {
+            return
+        }
+        
+        let opponentState = toState.invert()
+        var currentState = BoardCellState.Empty
+        var currentLocation = location
+        
+        do {
+            currentLocation = direction.move(currentLocation)
+            currentState = self[currentLocation]
+            self[currentLocation] = toState
+        } while (isWithinBounds(currentLocation) && currentState == toState)
+        
+    }
     
+    private func checkIfGameHasFinished() -> Bool {
+        return !canPlayerMakeMove(BoardCellState.Black) && !canPlayerMakeMove(BoardCellState.White)
+    }
     
+    private func canPlayerMakeMove(toState:BoardCellState) -> Bool {
+        return anyCellsMatchCondition{self.isValidMove($0, toState: toState)}
+    }
     
-    
-    
-    
-    
+    func switchTurns() {
+        var intendedNextMove = nextMove.invert()
+        if canPlayerMakeMove(intendedNextMove) {
+            nextMove = intendedNextMove
+        }
+    }
     
     
     

@@ -78,11 +78,11 @@ class ViewController: UIViewController {
         let url = NSURL(string:urlString)
         println("Requesting from FB with URL: \(url)")
         
-        let request = NSURLRequest(URL:url)
+        let request = NSURLRequest(URL:url!)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
             var error: NSError?
-            let jsonObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.fromMask(0), error: &error)
+            let jsonObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error)
             if let jsonObject = jsonObject as? [String:AnyObject] {
                 if error == nil {
                     println("Data returned from FB:\n\(jsonObject)")

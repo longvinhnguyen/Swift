@@ -63,7 +63,7 @@ class Cafe: NSObject {
     
     
     var pictureURL:NSURL {
-        return NSURL(string:"http://graph.facebook.com/place/picture?id=\(self.fbid)&type=large")
+        return NSURL(string:"http://graph.facebook.com/place/picture?id=\(self.fbid)&type=large")!
     }
 }
 
